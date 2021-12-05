@@ -22,24 +22,26 @@ let browser;
             }))
         }
     );
-    await page.goto(searchResults[0].link, {'timeout': 10000, 'waitUntil':'load'});
-    const libCount = await page.evaluate(() => {
-            const count = {};
-            [...document.querySelectorAll("script")].forEach(e => {
-                const src = e.getAttribute('src');
-                const splittedSrc = src ? src.split('/') : []
-                const splittedSrcLength = splittedSrc.length
-                const libName = splittedSrcLength ? splittedSrc[splittedSrcLength - 1] : ''
-                if(libName && count[libName]){
-                    count[libName] = count[libName] + 1
-                } else if (libName){
-                    count[libName] = 1
-                }
-            })
-            return count
-        }
-    );
-    console.log({ libCount });
+    for (const element of searchResults) {
+        await page.goto(element.link, {'timeout': 10000, 'waitUntil':'load'});
+        const libCount = await page.evaluate(() => {
+                const count = {};
+                [...document.querySelectorAll("script")].forEach(e => {
+                    const src = e.getAttribute('src');
+                    const splittedSrc = src ? src.split('/') : []
+                    const splittedSrcLength = splittedSrc.length
+                    const libName = splittedSrcLength ? splittedSrc[splittedSrcLength - 1] : ''
+                    if(libName && count[libName]){
+                        count[libName] = count[libName] + 1
+                    } else if (libName){
+                        count[libName] = 1
+                    }
+                })
+                return count
+            }
+        );
+        console.log({ libCount });
+    }
 })()
     .catch(err => console.error(err))
     .finally(async () => await browser.close())
