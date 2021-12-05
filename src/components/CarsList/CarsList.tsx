@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Pagination } from "../common";
 import { useFetch } from "../../hooks";
 import { getCarsData } from "../../api/cars";

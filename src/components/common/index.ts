@@ -5,3 +5,5 @@ export { default as Typography } from "@material-ui/core/Typography";
 export { default as Grid } from "@material-ui/core/Grid";
 export { default as Box } from "@material-ui/core/Box";
 export { default as Pagination } from "@material-ui/lab/Pagination";
+export { default as CardActions } from "@material-ui/core/CardActions";
+export { default as Skeleton } from "@material-ui/lab/Skeleton";

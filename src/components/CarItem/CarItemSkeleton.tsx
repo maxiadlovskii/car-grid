@@ -1,9 +1,11 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Skeleton from "@material-ui/lab/Skeleton";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Skeleton,
+} from "../common";
 import { useStyles } from "./CarItem.styles";
 
 export const CarItemSkeleton: React.FunctionComponent = () => {
